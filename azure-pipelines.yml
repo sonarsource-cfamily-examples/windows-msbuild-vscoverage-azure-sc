@@ -1,5 +1,5 @@
 schedules:                          # This schedule ensures this example itself
-- cron: '23 3 * * SUN'              # stays up to date. It is not necessary
+- cron: '23 0 * * SUN'              # stays up to date. It is not necessary
   displayName: Weekly health check  # for analyzing your project on SonarCloud.
   branches:                         # You can omit "schedules:" section.
     include:
