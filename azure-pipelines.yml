@@ -4,6 +4,7 @@ schedules:                          # This schedule ensures this example itself
   branches:                         # You can omit "schedules:" section.
     include:
       - main
+  always: true
 jobs:
 - job: BuildWindowsWithSonarCloud
   displayName: Build for Windows\MSBuild With SonarCloud
