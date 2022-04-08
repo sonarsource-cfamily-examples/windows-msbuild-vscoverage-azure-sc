@@ -18,7 +18,7 @@ jobs:
     displayName: Download and install build wrapper
   - pwsh: |
       $path = vswhere -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe | select-object -first 1
-      & "$HOME\.sonar\build-wrapper-win-x86\build-wrapper-win-x86-64.exe" --out-dir build_wrapper_output_directory $path sonar_scanner_example.vcxproj /t:rebuild
+      & "$HOME\.sonar\build-wrapper-win-x86\build-wrapper-win-x86-64.exe" --out-dir build_wrapper_output_directory $path sonar_scanner_example.vcxproj /t:rebuild /nodeReuse:false
     workingDirectory: .
     displayName: Build in build-wrapper
   - task: SonarCloudAnalyze@1
