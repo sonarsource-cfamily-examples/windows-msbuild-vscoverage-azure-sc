@@ -21,11 +21,11 @@ jobs:
   - pwsh: |
       $path = vswhere -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe | select-object -first 1
       & "$HOME\.sonar\build-wrapper-win-x86\build-wrapper-win-x86-64.exe" --out-dir build_wrapper_output_directory $path sonar_scanner_example.vcxproj /t:rebuild /nodeReuse:false
-      # Execute the tests to generate the coverage statistics
       & $path test1\test1.vcxproj
       & $path test2\test2.vcxproj
     workingDirectory: .
-    displayName: Build in build-wrapper and tests
+    displayName: Build in build-wrapper and build the tests
+  # Execute the tests to generate the coverage statistics
   - task: VSTest@2
     inputs:
       testSelector: 'testAssemblies'
