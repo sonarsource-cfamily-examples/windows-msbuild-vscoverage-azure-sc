@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{CB421741-CB06-4AD8-BB7D-E0BC608B9322}</ProjectGuid>
+    <ProjectGuid>{791F6A90-8673-4540-B9CD-6141F7627285}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>unittest</RootNamespace>
+    <RootNamespace>test1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
   </PropertyGroup>
@@ -97,7 +97,6 @@
       <UseFullPaths>true</UseFullPaths>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -114,7 +113,6 @@
       <UseFullPaths>true</UseFullPaths>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -133,7 +131,6 @@
       <UseFullPaths>true</UseFullPaths>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,7 +151,6 @@
       <UseFullPaths>true</UseFullPaths>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -164,14 +160,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="unit-test.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="pch.h" />
+    <ClCompile Include="test1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\sonar_scanner_example.vcxproj">
-      <Project>{713f2d68-dbb3-49ae-86f6-9dcc507d997d}</Project>
+      <Project>{34f6d6c1-431b-4f83-96f1-e80cad60597a}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

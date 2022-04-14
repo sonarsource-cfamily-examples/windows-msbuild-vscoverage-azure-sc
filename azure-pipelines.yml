@@ -21,17 +21,19 @@ jobs:
   - pwsh: |
       $path = vswhere -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe | select-object -first 1
       & "$HOME\.sonar\build-wrapper-win-x86\build-wrapper-win-x86-64.exe" --out-dir build_wrapper_output_directory $path sonar_scanner_example.vcxproj /t:rebuild /nodeReuse:false
-      & $path unit-test\unit-test.vcxproj
+      & $path test1\test1.vcxproj
+      & $path test2\test2.vcxproj
     workingDirectory: .
     displayName: Build in build-wrapper and test
   - task: VSTest@2
     inputs:
       testSelector: 'testAssemblies'
       testAssemblyVer2: |
-        unit-test\*\unit-test.dll
+        test1\*\test1.dll
+        test2\*\test2.dll
       searchFolder: '$(System.DefaultWorkingDirectory)'
       resultsFolder: '$(System.DefaultWorkingDirectory)/CoverageResults'
       otherConsoleOptions: '/collect:"Code Coverage;Format=Xml"' # Necessary to have an XML coverage report
       codeCoverageEnabled: true
-      testRunTitle: 'Run unit test'
+      testRunTitle: 'Run tests'
   - task: SonarCloudAnalyze@1
