@@ -1,19 +1,19 @@
-= C++ example project scanned on SonarCloud using Azure Pipelines
+= C++ example project scanned on SonarCloud with code coverage using Azure Pipelines
 // URIs:
-:uri-qg-status: https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-msbuild-azure-sc
-:img-qg-status: https://sonarcloud.io/api/project_badges/measure?project=sonarsource-cfamily-examples_windows-msbuild-azure-sc&metric=alert_status
-:uri-build-status: https://dev.azure.com/sonarsource-cfamily-examples/windows-msbuild-azure-sc/_build/latest?definitionId=2
-:img-build-status: https://dev.azure.com/sonarsource-cfamily-examples/windows-msbuild-azure-sc/_apis/build/status/sonarsource-cfamily-examples.windows-msbuild-azure-sc
+:uri-qg-status: https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-msbuild-vscoverage-azure-sc
+:img-qg-status: https://sonarcloud.io/api/project_badges/measure?project=sonarsource-cfamily-examples_windows-msbuild-vscoverage-azure-sc&metric=alert_status
+:uri-build-status: https://dev.azure.com/sonarsource-cfamily-examples/windows-msbuild-vscoverage-azure-sc/_build/latest?definitionId=2
+:img-build-status: https://dev.azure.com/sonarsource-cfamily-examples/windows-msbuild-vscoverage-azure-sc/_apis/build/status/sonarsource-cfamily-examples.windows-msbuild-vscoverage-azure-sc
 
 image:{img-build-status}[Build Status, link={uri-build-status}]
 image:{img-qg-status}[Quality Gate Status,link={uri-qg-status}]
 
-*This project is analysed on https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-msbuild-azure-sc[SonarCloud]!*
+*This project is analysed on https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-vscoverage-msbuild-azure-sc[SonarCloud]!*
 
 :note-caption: :information_source:
 NOTE: This simple example ignores https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#analysis-cache[analysis cache] and https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#parallel-code-scan[multithreaded execution] both of which can boost analysis significantly.
 
-It is very easy to analyze a C, C++ and Objective-C project with SonarCloud https://docs.sonarcloud.io/getting-started/azure-devops/[on Azure DevOps]:
+It is very easy to analyze a C, C++ and Objective-C project on SonarCloud with code coverage https://docs.sonarcloud.io/getting-started/azure-devops/[using Azure DevOps]:
 
 . Create a `sonar-project.properties` file to store your configuration
 . Install SonarCloud extension for your organization:
@@ -33,8 +33,10 @@ It is very easy to analyze a C, C++ and Objective-C project with SonarCloud http
 * Choose your `organization`
 * Choose "Use standalone scanner" (`scannerMode: 'CLI'`)
 * Choose "Store configuration with my source code (sonar-project.properties)" (`configMode: 'file'`)
+* Initialize the extra property `sonar.cfamily.vscoveragexml.reportsPath` with the path that will contain your XML coverage report
 .. Add a task to download the https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#analysis-steps-using-build-wrapper[Build Wrapper]
 .. Wrap your compilation with the Build Wrapper
+.. Add a `VSTest` task to launch your tests. Be sure to enable code coverage and to convert the result file into an XML file
 .. Add the `SonarCloudAnalyze` task
 
 You can take a look at the link:sonar-project.properties[sonar-project.properties] and link:azure-pipelines.yml[azure-pipelines.yml] to see it in practice.
