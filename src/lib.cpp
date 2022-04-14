@@ -4,9 +4,9 @@ int myfun(bool b, int (*callback)(int)) {
   int num = -1;
 
   if (b) {
-    num = callback(num);
+    num = callback(callback(num));
   } else {
-    return callback(callback(num));
+    num = 15 + num;
   }
 
   if (callback != 0) {
