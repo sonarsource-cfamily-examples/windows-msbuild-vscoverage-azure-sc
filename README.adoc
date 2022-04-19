@@ -48,6 +48,7 @@ You can take a look at the link:sonar-project.properties[sonar-project.propertie
 - https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#analysis-cache[Configuring C, C++ and Objective-C analysis cache]
 - https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#parallel-code-scan[Configuring multithreaded execution]
 - https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#analysis-steps-using-compilation-database[Using compilation database (compile_commands.json)]
+- https://docs.sonarcloud.io/enriching/test-coverage/test-coverage-parameters/[Test coverage parameters]
 
 = Windows\MSBuild
 
