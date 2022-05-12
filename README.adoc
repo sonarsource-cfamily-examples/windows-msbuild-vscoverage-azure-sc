@@ -1,4 +1,4 @@
-= C++ example project for generating test coverage with vscoverage on Azure Pipelines
+= C++ example project for generating test coverage with VisualStudio coverage tool on Azure Pipelines
 // URIs:
 :uri-qg-status: https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-msbuild-vscoverage-azure-sc
 :img-qg-status: https://sonarcloud.io/api/project_badges/measure?project=sonarsource-cfamily-examples_windows-msbuild-vscoverage-azure-sc&metric=alert_status
