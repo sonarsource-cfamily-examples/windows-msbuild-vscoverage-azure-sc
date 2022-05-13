@@ -10,7 +10,7 @@ image:{img-qg-status}[Quality Gate Status,link={uri-qg-status}]
 
 *The test coverage shown here works on both SonarQube and SonarCloud. This project is analysed on https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-vscoverage-msbuild-azure-sc[SonarCloud]!*
 
-NOTE: This simple example aims at demonstrating code coverage in action. It explains how to add coverage on a project for which the analysis is already configured. Some analysis https://github.com/orgs/sonarsource-cfamily-examples/repositories?q=topic%3Aconfiguration+msbuild-azure&type=all&language=&sort=[configuration examples] are available. +
+NOTE: This simple example aims at demonstrating code coverage in action. It explains how to add coverage on a project for which the analysis is already configured. Some analysis https://github.com/sonarsource-cfamily-examples?q=azure+topic%3Amsbuild[configuration examples] are available. +
 Adding code coverage is done the same way regardless of whether you use the Build Wrapper or a Compilation Database to configure the analysis.
 
 To get coverage and feed it to the Sonar Scanner, use the following procedure.
