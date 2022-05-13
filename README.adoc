@@ -1,4 +1,4 @@
-= C++ example project scanned on SonarCloud with code coverage using Azure Pipelines
+= C++ example project for generating test coverage with VisualStudio coverage tool on Azure Pipelines
 // URIs:
 :uri-qg-status: https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-msbuild-vscoverage-azure-sc
 :img-qg-status: https://sonarcloud.io/api/project_badges/measure?project=sonarsource-cfamily-examples_windows-msbuild-vscoverage-azure-sc&metric=alert_status
@@ -8,36 +8,16 @@
 image:{img-build-status}[Build Status, link={uri-build-status}]
 image:{img-qg-status}[Quality Gate Status,link={uri-qg-status}]
 
-*This project is analysed on https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-vscoverage-msbuild-azure-sc[SonarCloud]!*
+*The test coverage shown here works on both SonarQube and SonarCloud. This project is analysed on https://sonarcloud.io/dashboard?id=sonarsource-cfamily-examples_windows-vscoverage-msbuild-azure-sc[SonarCloud]!*
 
-:note-caption: :information_source:
-NOTE: This simple example ignores https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#analysis-cache[analysis cache] and https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#parallel-code-scan[multithreaded execution] both of which can boost analysis significantly.
+NOTE: This simple example aims at demonstrating code coverage in action. It explains how to add coverage on a project for which the analysis is already configured. Some analysis https://github.com/sonarsource-cfamily-examples?q=azure+topic%3Amsbuild[configuration examples] are available. +
+Adding code coverage is done the same way regardless of whether you use the Build Wrapper or a Compilation Database to configure the analysis.
 
-It is very easy to analyze a C, C++ and Objective-C project on SonarCloud with code coverage https://docs.sonarcloud.io/getting-started/azure-devops/[using Azure DevOps]:
+To get coverage and feed it to the Sonar Scanner, use the following procedure.
 
-. Create a `sonar-project.properties` file to store your configuration
-. Install SonarCloud extension for your organization:
-.. Open Organization settings (in the bottom left corner of organization view)
-.. Open "Extensions" page (in the General category)
-.. Press "Browse marketplace" and find "SonarCloud"
-.. Select your organization and click "Install"
-. Add the SonarCloud connection to your project:
-.. Open Project settings (in the bottom left corner)
-.. Open "Service connections" page (in the Pipelines category)
-.. Press "New connection" and select the "SonarCloud"
-.. Fill in the `SONAR_TOKEN`
-.. Name your connection `SonarCloud` (to reference it later in `azure-pipelines.yml`)
-. In your `azure-pipelines.yml` file:
-.. Add the `SonarCloudPrepare` task and configure it:
-* Specify the `SonarCloud Service Endpoint` as `SonarCloud` - the connection you created earlier
-* Choose your `organization`
-* Choose "Use standalone scanner" (`scannerMode: 'CLI'`)
-* Choose "Store configuration with my source code (sonar-project.properties)" (`configMode: 'file'`)
-* Initialize the extra property `sonar.cfamily.vscoveragexml.reportsPath` with the path that will contain your XML coverage report
-.. Add a task to download the https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#analysis-steps-using-build-wrapper[Build Wrapper]
-.. Wrap your compilation with the Build Wrapper
-.. Add a `VSTest` task to launch your tests. Be sure to enable code coverage and to convert the result file into an XML file
-.. Add the `SonarCloudAnalyze` task
+. In your azure-pipelines.yml file, initialize the extra property `sonar.cfamily.vscoveragexml.reportsPath` with the path that will contain your XML coverage report
+. Add a `VSTest` task to launch your tests. Be sure to enable code coverage and to convert the result file into an XML file
+. Make sure the `SonarCloudAnalyze` task runs after the `VSTest` task
 
 You can take a look at the link:sonar-project.properties[sonar-project.properties] and link:azure-pipelines.yml[azure-pipelines.yml] to see it in practice.
 
@@ -49,15 +29,6 @@ You can take a look at the link:sonar-project.properties[sonar-project.propertie
 - https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#parallel-code-scan[Configuring multithreaded execution]
 - https://docs.sonarcloud.io/advanced-setup/languages/c-c-objective-c/#analysis-steps-using-compilation-database[Using compilation database (compile_commands.json)]
 - https://docs.sonarcloud.io/enriching/test-coverage/test-coverage-parameters/[Test coverage parameters]
-
-= Windows\MSBuild
-
-A build of the https://github.com/sonarsource-cfamily-examples/code[code repository] on Windows platform using MSBuild build system.
-
-To build the code run:
-----
-msbuild sonar_scanner_example.vcxproj
-----
 
 = Code Description
 
