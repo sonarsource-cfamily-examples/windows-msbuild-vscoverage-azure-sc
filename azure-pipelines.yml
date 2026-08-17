@@ -37,4 +37,9 @@ jobs:
       otherConsoleOptions: '/collect:"Code Coverage;Format=Xml"' # Necessary to have an XML coverage report
       codeCoverageEnabled: true
       testRunTitle: 'Run tests'
+  - task: JavaToolInstaller@0
+    inputs:
+      versionSpec: '21'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
   - task: SonarCloudAnalyze@1
