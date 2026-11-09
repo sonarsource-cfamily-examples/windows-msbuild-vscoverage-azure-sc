@@ -6,11 +6,11 @@ jobs:
   variables:
     BUILD_WRAPPER_DOWNLOAD_URL: https://sonarcloud.io/static/cpp/build-wrapper-win-x86.zip
   steps:
-  - task: SonarCloudPrepare@1
+  - task: SonarCloudPrepare@4
     inputs:
       SonarCloud: 'SonarCloud' # Name of the SonarCloud service connection you created
       organization: 'sonarsource-cfamily-examples'
-      scannerMode: 'CLI'
+      scannerMode: 'cli'
       configMode: 'file'
       extraProperties: |
         sonar.cfamily.vscoveragexml.reportsPath=$(System.DefaultWorkingDirectory)/CoverageResults/*/*.xml
@@ -37,6 +37,6 @@ jobs:
       otherConsoleOptions: '/collect:"Code Coverage;Format=Xml"' # Necessary to have an XML coverage report
       codeCoverageEnabled: true
       testRunTitle: 'Run tests'
-  - task: SonarCloudAnalyze@1
+  - task: SonarCloudAnalyze@4
     inputs:
       jdkversion: 'JAVA_HOME_21_X64'
